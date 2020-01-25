@@ -1,7 +1,7 @@
 import _Vue from 'vue'
 import debounce from 'lodash.debounce'
 
-export default function (Vue: typeof _Vue) {
+export default function (Vue: typeof _Vue, { debounceTime, maxWait }) {
   Vue.directive('debounce-model', {
     inserted(el, binding, vnode) {
       console.log(vnode)
@@ -10,7 +10,9 @@ export default function (Vue: typeof _Vue) {
         if (vnode.context) {
           vnode.context.$data[binding.expression] = (<HTMLInputElement>el).value
         }
-      }, 200)
+      }, debounceTime, {
+        maxWait
+      })
 
       vnode.context[`$_applyDebounce_${binding.expression}`] = _applyDebounce
     },
