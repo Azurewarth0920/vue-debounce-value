@@ -1,7 +1,7 @@
 {
   "name": "vue-debounce-value",
   "version": "0.0.1",
-  "description": "",
+  "description": "an vue directive plugin of getting debouncing value or throttling value from input.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "scripts": {
@@ -21,6 +21,12 @@
   "bugs": {
     "url": "https://github.com/KaraMisoRamen/vue-debounce-value/issues"
   },
+  "keywords": [
+    "vuejs",
+    "vue directive",
+    "debounce",
+    "throttle"
+  ],
   "homepage": "https://github.com/KaraMisoRamen/vue-debounce-value#readme",
   "devDependencies": {
     "@babel/plugin-transform-object-assign": "^7.10.1",
