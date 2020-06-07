@@ -13,10 +13,7 @@ export const setDefaults = options => {
 export default {
   inserted(el, binding, vnode) {
     const { target, useThrottle, delay } = parseOptions(binding, defaults)
-
     const throttleOption = useThrottle ? { maxWait: delay } : {}
-
-    console.log(target, useThrottle, delay)
 
     const debounceFunction = debounce(
       function(event) {
