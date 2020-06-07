@@ -1,31 +1,15 @@
-import debounce from 'lodash.debounce'
+import VueDebounceValue, { setDefaults } from './debouncer'
 
-export default function(Vue, { debounceTime, maxWait }) {
-  Vue.directive('debounce', {
-    inserted(el, binding, vnode) {
-      const maxWaitFilter = maxWait ? { maxWait } : {}
-
-      const debounceFunction = debounce(
-        function(event) {
-          if (vnode.context && event.target) {
-            vnode.context[binding.expression] = event.target.value
-          }
-        },
-        debounceTime,
-        { maxWait }
-      )
-
-      el.addEventListener('input', debounceFunction)
-      vnode.context[`_${binding.expression}_debouncer`] = debounceFunction
-    },
-    unbind(el, binding, vnode) {
-      el.removeEventListener(
-        'input',
-        vnode.context[`_${binding.expression}_debouncer`]
-      )
-
-      vnode.context[`_${binding.expression}_debouncer`].cancel()
-      delete vnode.context[`_${binding.expression}_debouncer`]
-    }
-  })
+const install = (Vue, options) => {
+  if (options) setDefaults(options)
+  Vue.directive('debounce-value', VueDebounceValue)
 }
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.VueDebounceValue = VueDebounceValue
+  window.VueDebounceValue.setDefaults = setDefaults
+  window.Vue.use(install)
+}
+
+VueDebounceValue.install = install
+export default VueDebounceValue
