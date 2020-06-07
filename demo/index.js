@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-import VueDebounceValue from '../dist/vue-debounce-value'
+import VueDebounceValue from '../src/index'
 
 Vue.use(VueDebounceValue, {
   delay: 400,
