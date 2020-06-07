@@ -1,7 +1,7 @@
 export const parseOptions = (binding, defaults = {}) => {
   if (typeof binding.value === 'string') {
     return {
-      target: binding.value,
+      target: binding.expression,
       ...defaults
     }
   } else {

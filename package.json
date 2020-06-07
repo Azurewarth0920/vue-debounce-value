@@ -1,25 +1,38 @@
 {
-  "name": "vue-debounce-model",
+  "name": "vue-debounce-value",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "scripts": {
     "dev": "parcel ./demo/index.html",
+    "clean": "rm -rf dist",
+    "build": "run-s clean build:es build:iife",
+    "build:iife": "rollup --config build/rollup.config.es.js",
+    "build:es": "rollup --config build/rollup.config.iife.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KaraMisoRamen/vue-debounce-model.git"
+    "url": "git+https://github.com/KaraMisoRamen/vue-debounce-value.git"
   },
   "author": "pei.fan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KaraMisoRamen/vue-debounce-model/issues"
+    "url": "https://github.com/KaraMisoRamen/vue-debounce-value/issues"
   },
-  "homepage": "https://github.com/KaraMisoRamen/vue-debounce-model#readme",
+  "homepage": "https://github.com/KaraMisoRamen/vue-debounce-value#readme",
   "devDependencies": {
+    "@babel/plugin-transform-object-assign": "^7.10.1",
+    "@rollup/plugin-babel": "^5.0.3",
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.1",
     "@vue/component-compiler-utils": "^3.1.2",
+    "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.4",
+    "rollup": "^2.13.1",
+    "rollup-plugin-uglify": "^6.0.4",
+    "uglify-save-license": "^0.4.1",
     "vue": "^2.6.11",
     "vue-hot-reload-api": "^2.3.4",
     "vue-template-compiler": "^2.6.11"

@@ -1,8 +1,8 @@
 <template>
   <div class="app">
-    <input type="text" v-model="model" v-debounce="debounceModel" v-if="flag" />
+    <input type="text" v-model="model" v-debounce-value="debounceModel" />
     <p>v-model: {{ model }}</p>
-    <p>v-debounce-model: {{ debounceModel }}</p>
+    <p>v-debounce-value: {{ debounceModel }}</p>
     <input type="text" v-model="debounceModel" />
   </div>
 </template>
@@ -12,19 +12,13 @@ export default {
   data() {
     return {
       model: '',
-      debounceModel: '',
-      flag: true
+      debounceModel: 'aaa'
     }
   },
   methods: {
     plusModel() {
       this.model = this.model + 'd'
     }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.flag = false
-    }, 5000)
   }
 }
 </script>

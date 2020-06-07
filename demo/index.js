@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import App from './App'
-import vueDebounceModel from '../src/index'
+import VueDebounceValue from '../dist/vue-debounce-value'
 
-Vue.use(vueDebounceModel, {
-  debounceTime: 400,
-  maxWait: 400
+Vue.use(VueDebounceValue, {
+  delay: 400,
+  useThrottle: true
 })
 
 new Vue({
